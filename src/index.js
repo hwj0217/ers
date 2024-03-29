@@ -1,13 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from 'react-router-dom';
+import Layout from './Layout/Layout.js';
+import App from './App.js';
+import { legacy_createStore as createStore } from 'redux';
+import { Provider } from 'react-redux';
+import rootReducer from './modules';
+
+const store = createStore(rootReducer); // 스토어를 만듭니다.
+console.log(store.getState()); // 스토어의 상태를 확인해봅시다.
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+    <Layout>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Layout>
+    </Provider>
   </React.StrictMode>
 );
 
