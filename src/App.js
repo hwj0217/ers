@@ -1,21 +1,20 @@
 
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Main from './Main';
 import Join from './User/Join';
 import Login from './User/Login';
 import FindPassword from './User/FindPassword';
-import CounterContainer from './containers/CounterContainer';
+import { useSelector } from 'react-redux';
 
 function App() {
-
+  const isLogin = useSelector(state => state.loggedIn);
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<Main />}></Route>
         <Route path="/join" element={<Join />}></Route>
-        <Route path="/login" element={<Login />}></Route>
+        <Route path="/login" element={!isLogin ? <Login /> : <Navigate to="/" />}></Route>
         <Route path="/findpassword" element={<FindPassword />}></Route>
-        <Route path="/countercontainer" element={<CounterContainer />}></Route>
       </Routes>
     </div>
   );

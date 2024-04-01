@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import ersLogo from "../assets/img/ers-logo.png";
-import EmailInputForm from "../component/JoinComponent/EmailInputForm";
-import CheckAuthKey from "../component/JoinComponent/CheckAuthKey";
-import PasswordInputForm from "../component/JoinComponent/PasswordInputForm";
+import EmailInputForm from "../component/joinComponent/EmailInputForm";
+import CheckAuthKey from "../component/joinComponent/CheckAuthKey";
+import PasswordInputForm from "../component/joinComponent/PasswordInputForm";
 
 const FindPassword = () => {
     const [step1, setStep1] = useState(true);

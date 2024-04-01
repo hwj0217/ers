@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import ersLogo from "../assets/img/ers-logo.png";
-import EmailInputForm from "../component/JoinComponent/EmailInputForm";
-import CheckAuthKey from "../component/JoinComponent/CheckAuthKey";
-import UserIdInputForm from "../component/JoinComponent/UserIdInputForm";
-import PasswordInputForm from "../component/JoinComponent/PasswordInputForm";
-import CheckAgreement from "../component/JoinComponent/CheckAgreement";
+import EmailInputForm from "../component/joinComponent/EmailInputForm";
+import CheckAuthKey from "../component/joinComponent/CheckAuthKey";
+import UserIdInputForm from "../component/joinComponent/UserIdInputForm";
+import PasswordInputForm from "../component/joinComponent/PasswordInputForm";
+import CheckAgreement from "../component/joinComponent/CheckAgreement";
 const Join = () => {
     const [step1, setStep1] = useState(true);
     const [step2, setStep2] = useState(false);
