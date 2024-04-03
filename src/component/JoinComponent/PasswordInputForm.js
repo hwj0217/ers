@@ -1,13 +1,12 @@
 // CheckAuthKey 컴포넌트
 import React, { useState } from 'react';
 
-const PasswordInputForm = ({ step4, setStep4, setStep5, password, setPassword, email }) => {
+const PasswordInputForm = ({ step4, setStep4, setStep5, password, setPassword, email, selectedIndex }) => {
     const [error, setError] = useState('');
     const [isValid, setIsValid] = useState(false);
     const [passwordCheck, setPasswordCheck] = useState('');
     const [passwordCheckError, setPasswordCheckError] = useState('');
     const [isValidPasswordCheck, setIsValidPasswordCheck] = useState(false);
-
     // 비밀번호 유효성 검사
     const handleChange = (e) => {
         const newPassword = e.target.value;
@@ -46,7 +45,7 @@ const PasswordInputForm = ({ step4, setStep4, setStep5, password, setPassword, e
     const handleSummit = () => {
         const userData = { email: email, new_password: password };
         if (window.location.pathname === "/findpassword") {
-          fetch('/ers/resetPassword', {
+          fetch('http://localhost:8080/ers/resetPassword', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -133,11 +132,11 @@ const PasswordInputForm = ({ step4, setStep4, setStep5, password, setPassword, e
                 </div>
             </div>
             {passwordCheckError && <div className="invalid-input">{passwordCheckError}</div>}
-            <div style={{ color: 'gray', fontSize: '0.875rem' }}>입력하신 메일 주소로 메일을 전송하였습니다.</div>
-            <div style={{ color: 'gray', fontSize: '0.875rem' }}>메일을 확인하시고 인증키를 입력하세요.</div>
-            <button disabled={!isValid || !isValidPasswordCheck} onClick={handleSummit} className="btn btn-primary py-2 mt-2">
+            {!selectedIndex && <div style={{ color: 'gray', fontSize: '0.875rem' }}>입력하신 메일 주소로 메일을 전송하였습니다.</div>}
+            {!selectedIndex && <div style={{ color: 'gray', fontSize: '0.875rem' }}>메일을 확인하시고 인증키를 입력하세요.</div>}
+            {!selectedIndex && <button disabled={!isValid || !isValidPasswordCheck} onClick={handleSummit} className="btn btn-primary py-2 mt-2">
                 다음
-            </button>
+            </button>}
         </div>
     );
 };

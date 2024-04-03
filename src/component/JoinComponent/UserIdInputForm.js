@@ -22,7 +22,7 @@ const UserIdInputForm = ({ step3, setStep3, setStep4, email, userId, setUserId }
   const handleSummit = () => {
     const userData = {user_id: userId};
 
-    fetch('/ers/checkUserId', {
+    fetch('http://localhost:8080/ers/checkUserId', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

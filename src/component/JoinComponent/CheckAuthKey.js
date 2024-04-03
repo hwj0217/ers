@@ -22,7 +22,7 @@ const CheckAuthKey = ({ step2, setStep2, setStep3, email, authKey, setAuthKey })
   const handleSummit = () => {
     const userData = { email: email, auth_key: authKey };
     if (window.location.pathname === "/findpassword") {
-      fetch('/ers/findPasswordAuthKey', {
+      fetch('http://localhost:8080/ers/findPasswordAuthKey', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -44,7 +44,7 @@ const CheckAuthKey = ({ step2, setStep2, setStep3, email, authKey, setAuthKey })
         .catch(error => console.error('Error:', error));
     }
     else if (window.location.pathname === "/join") {
-      fetch('/ers/checkAuthKey', {
+      fetch('http://localhost:8080/ers/checkAuthKey', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

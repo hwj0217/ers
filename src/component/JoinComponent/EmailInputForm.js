@@ -22,7 +22,7 @@ const EmailInputForm = ({ step1, setStep1, setStep2, email, setEmail, setUserId 
   const handleCheck = () => {
     const userData = { email };
     if(window.location.pathname === "/findpassword"){
-      fetch('/ers/findPassword', {
+      fetch('http://192.168.0.4:8080/ers/findPassword', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -44,7 +44,7 @@ const EmailInputForm = ({ step1, setStep1, setStep2, email, setEmail, setUserId 
       .catch(error => console.error('Error:', error));
     }
     else if (window.location.pathname === "/join"){
-      fetch('/ers/checkUserEmail', {
+      fetch('http://192.168.0.4:8080/ers/checkUserEmail', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

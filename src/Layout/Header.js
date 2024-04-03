@@ -18,7 +18,7 @@ function Header() {
 
         const userData = { email: userLoginData.email };
 
-        fetch('/ers/webLogout', {
+        fetch('http://192.168.0.4:8080/ers/webLogout', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -49,7 +49,7 @@ function Header() {
     return (
         <>
 
-            <Navbar key={expand} expand={expand} className="bg-light shadow bg-body-tertiary mb-3">
+            <Navbar key={expand} expand={expand} className="bg-light shadow bg-body-tertiary mb-3" >
                 <Container fluid>
                     <Navbar.Brand href="/">ERS</Navbar.Brand>
                     <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
@@ -74,7 +74,7 @@ function Header() {
                                         title="계정관리"
                                         id={`offcanvasNavbarDropdown-expand-${expand}`}
                                     >
-                                        <NavDropdown.Item href="#action3">계정 정보</NavDropdown.Item>
+                                        <NavDropdown.Item href="/userinfo">계정 정보</NavDropdown.Item>
                                         <NavDropdown.Divider />
                                         <NavDropdown.Item href="#action4">비밀번호 변경</NavDropdown.Item>
                                         <NavDropdown.Divider />
@@ -89,11 +89,7 @@ function Header() {
                                         title="로그인 하세요"
                                         id={`offcanvasNavbarDropdown-expand-${expand}`}
                                     >
-                                        <NavDropdown.Item href="#action3">계정 정보</NavDropdown.Item>
-                                        <NavDropdown.Divider />
-                                        <NavDropdown.Item href="#action4">비밀번호 변경</NavDropdown.Item>
-                                        <NavDropdown.Divider />
-                                        <NavDropdown.Item onClick={handleLogout}>로그아웃</NavDropdown.Item>
+                                        <NavDropdown.Item href="/login">로그인</NavDropdown.Item>
                                     </NavDropdown>
                                 </Nav>
                             )}

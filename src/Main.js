@@ -7,7 +7,7 @@ function Main() {
     const [hello, setHello] = useState('');
 
     useEffect(() => {
-        axios.get('/ers/sample')
+        axios.get('http://localhost:8080/ers/sample')
             .then((res) => {
                 setHello(res.data);
             })

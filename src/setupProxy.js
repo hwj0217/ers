@@ -4,7 +4,7 @@ module.exports = function(app) {
   app.use(
     '/ers',
     createProxyMiddleware({
-      target: 'http://localhost:8080',	// 서버 URL or localhost:설정한포트번호
+      target: 'http://localhost:8080', // 포트 번호를 8080으로 변경
       changeOrigin: true,
     })
   );

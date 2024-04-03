@@ -57,7 +57,7 @@ const CheckAgreement = ({ email, userId, password }) => {
     const handleSummit = () => {
         const userData = { email: email, user_id: userId, name: "default", password: password };
 
-        fetch('/ers/regMember', {
+        fetch('http://localhost:8080/ers/regMember', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

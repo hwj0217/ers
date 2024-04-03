@@ -70,7 +70,7 @@ const Login = () => {
     const handleLogin = () => {
         const userData = { email: email, password: password };
 
-        fetch('/ers/login', {
+        fetch('http://localhost:8080/ers/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -85,14 +85,8 @@ const Login = () => {
                 } else if (data.code === "200") {
                     setEmailError('');
                     setPasswordError('')
-                    const loginInfo = {
-                        access_token: data.access_token,
-                        email: data.email,
-                        id: data.id,
-                        name: data.name
-                    };
-                    dispatch(login(loginInfo));
-                    sessionStorage.setItem("loginInfo", JSON.stringify(loginInfo));
+                    dispatch(login(data.member));
+                    sessionStorage.setItem("loginInfo", JSON.stringify(data.member));
                     console.log(JSON.parse(sessionStorage.getItem('loginInfo')))
                 }
                 if (data.error === "invalid_email") {
