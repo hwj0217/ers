@@ -17,6 +17,11 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import DraftsIcon from '@mui/icons-material/Drafts';
+import ManageAccountsOutlinedIcon from '@mui/icons-material/ManageAccountsOutlined';
+import LockResetOutlinedIcon from '@mui/icons-material/LockResetOutlined';
+import GavelOutlinedIcon from '@mui/icons-material/GavelOutlined';
+import LocalPoliceOutlinedIcon from '@mui/icons-material/LocalPoliceOutlined';
+import CopyrightIcon from '@mui/icons-material/Copyright';
 import { Button, FormControl, FormControlLabel, Grid, InputBase, InputLabel, Switch, alpha, styled } from "@mui/material";
 
 import AdbIcon from '@mui/icons-material/Adb';
@@ -152,7 +157,7 @@ const UserInfo = () => {
         <div className="">
             <Box sx={{ display: 'flex' }}>
                 <CssBaseline />
-                <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
+                {/* <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
                     <Toolbar>
                         <AdbIcon sx={{ md: 'flex', mr: 1 }} />
                         <Typography
@@ -173,7 +178,7 @@ const UserInfo = () => {
                             ERS
                         </Typography>
                     </Toolbar>
-                </AppBar>
+                </AppBar> */}
                 <Drawer
                     variant="permanent"
                     sx={{
@@ -204,7 +209,7 @@ const UserInfo = () => {
                                 onClick={(event) => handleListItemClick(event, 0)}
                             >
                                 <ListItemIcon>
-                                    <InboxIcon />
+                                    <ManageAccountsOutlinedIcon />
                                 </ListItemIcon>
                                 <ListItemText primary="프로필 설정" />
                             </ListItemButton>
@@ -213,7 +218,7 @@ const UserInfo = () => {
                                 onClick={(event) => handleListItemClick(event, 1)}
                             >
                                 <ListItemIcon>
-                                    <DraftsIcon />
+                                    <LockResetOutlinedIcon />
                                 </ListItemIcon>
                                 <ListItemText primary="비밀번호 변경" />
                             </ListItemButton>
@@ -225,7 +230,7 @@ const UserInfo = () => {
                                 onClick={(event) => handleListItemClick(event, 2)}
                             >
                                 <ListItemIcon>
-                                    <InboxIcon />
+                                    <GavelOutlinedIcon />
                                 </ListItemIcon>
                                 <ListItemText primary="이용약관" />
                             </ListItemButton>
@@ -234,7 +239,7 @@ const UserInfo = () => {
                                 onClick={(event) => handleListItemClick(event, 3)}
                             >
                                 <ListItemIcon>
-                                    <DraftsIcon />
+                                    <LocalPoliceOutlinedIcon />
                                 </ListItemIcon>
                                 <ListItemText primary="개인정보보호정책" />
                             </ListItemButton>
@@ -243,9 +248,21 @@ const UserInfo = () => {
                                 onClick={(event) => handleListItemClick(event, 4)}
                             >
                                 <ListItemIcon>
-                                    <DraftsIcon />
+                                    <CopyrightIcon />
                                 </ListItemIcon>
                                 <ListItemText primary="라이센스" />
+                            </ListItemButton>
+                        </List>
+                        <Divider />
+                        <List component="nav" aria-label="secondary mailbox folder">
+                            <ListItemButton
+                                selected={selectedIndex === 5}
+                                onClick={(event) => handleListItemClick(event, 5)}
+                            >
+                                <ListItemIcon>
+                                    <InboxIcon />
+                                </ListItemIcon>
+                                <ListItemText primary="회원탈퇴" />
                             </ListItemButton>
                         </List>
                     </Box>
@@ -341,10 +358,10 @@ const UserInfo = () => {
                     </Grid>
                 </Box>}
                 {selectedIndex === 2 && <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-                     <TermsOfService/>
+                    <TermsOfService />
                 </Box>}
                 {selectedIndex === 3 && <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-                     <PrivacyStatement/>
+                    <PrivacyStatement />
                 </Box>}
             </Box>
         </div>

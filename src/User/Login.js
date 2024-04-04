@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 
 import ersLogo from "../assets/img/ers-logo.png";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { login } from '../actions/loginAction';
 
 const Login = () => {

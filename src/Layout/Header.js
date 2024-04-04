@@ -1,6 +1,4 @@
-import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
@@ -38,20 +36,16 @@ function Header() {
     };
 
     if (loginUserInfo){
-        console.log("login");
         if(!loggedIn)
             dispatch(login(loginUserInfo));
-    }
-    else{
-        console.log("logout");
     }
 
     return (
         <>
 
-            <Navbar key={expand} expand={expand} className="bg-light shadow bg-body-tertiary mb-3" >
+            <Navbar style={{zIndex:1800}} key={expand} expand={expand} className="bg-light shadow bg-body-tertiary mb-3" >
                 <Container fluid>
-                    <Navbar.Brand href="/">ERS</Navbar.Brand>
+                    <Navbar.Brand className='ms-3' href="/">ERS</Navbar.Brand>
                     <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
                     <Navbar.Offcanvas
                         id={`offcanvasNavbar-expand-${expand}`}
@@ -74,9 +68,7 @@ function Header() {
                                         title="계정관리"
                                         id={`offcanvasNavbarDropdown-expand-${expand}`}
                                     >
-                                        <NavDropdown.Item href="/userinfo">계정 정보</NavDropdown.Item>
-                                        <NavDropdown.Divider />
-                                        <NavDropdown.Item href="#action4">비밀번호 변경</NavDropdown.Item>
+                                        <NavDropdown.Item href="/userinfo">마이페이지</NavDropdown.Item>
                                         <NavDropdown.Divider />
                                         <NavDropdown.Item onClick={handleLogout}>로그아웃</NavDropdown.Item>
                                     </NavDropdown>
