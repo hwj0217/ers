@@ -3,6 +3,7 @@ import React, { useState } from "react"
 import ersLogo from "../assets/img/ers-logo.png";
 import { useDispatch } from "react-redux";
 import { login } from '../actions/loginAction';
+import { sendPostRequest } from "../axios";
 
 const Login = () => {
     const dispatch = useDispatch();
@@ -69,15 +70,9 @@ const Login = () => {
     }
     const handleLogin = () => {
         const userData = { email: email, password: password };
+        const url = '/ers/login';
 
-        fetch('http://localhost:8080/ers/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(userData)
-        })
-            .then(response => response.json())
+        sendPostRequest(url, userData)
             .then((data) => {
                 console.log(data);
                 if (data.code === "900") {
@@ -98,6 +93,12 @@ const Login = () => {
             })
             .catch(error => console.error('Error:', error));
     };
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            handleLogin();
+        }
+    };
+
     return (
         <div className="">
             <div className="my-5">
@@ -118,6 +119,7 @@ const Login = () => {
                     placeholder="이메일을 입력하세요"
                     value={email}
                     onChange={handleEmailChange}
+                    onKeyDown={handleKeyPress}
                 />
                 {emailError && <div className="invalid-input">{emailError}</div>}
                 <div className="flex-grow">
@@ -129,6 +131,7 @@ const Login = () => {
                             placeholder="사용하실 비밀번호를 입력하세요."
                             value={password}
                             onChange={handlePasswordChange}
+                            onKeyDown={handleKeyPress}
                         />
                         <div className="position-absolute top-50 end-0 translate-middle-y me-2">
                             <i id="password-toggle" onClick={handlePasswordToggle} className="bi-eye-slash-fill password-eye"></i>

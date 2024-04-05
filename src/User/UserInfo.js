@@ -28,6 +28,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 import PasswordInputForm from "../component/joinComponent/PasswordInputForm";
 import PrivacyStatement from "../component/joinComponent/PrivacyStatement";
 import TermsOfService from "../component/joinComponent/TermsOfService";
+import Withdrawal from "../component/joinComponent/Withdrawal";
 const drawerWidth = 240;
 const BootstrapInput = styled(InputBase)(({ theme }) => ({
     'label + &': {
@@ -268,6 +269,7 @@ const UserInfo = () => {
                     </Box>
                 </Drawer>
                 {selectedIndex === 0 && <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+                    <div className="text-center mb-5"><h1>프로필 설정</h1></div>
                     <Grid container spacing={3}>
                         <Grid item xs={8}>
                             <div>
@@ -362,6 +364,9 @@ const UserInfo = () => {
                 </Box>}
                 {selectedIndex === 3 && <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
                     <PrivacyStatement />
+                </Box>}
+                {selectedIndex === 5 && <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+                    <Withdrawal />
                 </Box>}
             </Box>
         </div>

@@ -5,6 +5,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { useDispatch, useSelector } from 'react-redux';
 import { login, logout } from '../actions/loginAction';
+import { sendPostRequest } from '../axios';
 
 function Header() {
     const expand = 'md';
@@ -15,15 +16,8 @@ function Header() {
     const handleLogout = () => {
 
         const userData = { email: userLoginData.email };
-
-        fetch('http://192.168.0.4:8080/ers/webLogout', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(userData)
-        })
-            .then(response => response.json())
+        const url = "/ers/webLogout"
+        sendPostRequest(url, userData)
             .then((data) => {
                 console.log(data);
                 if (data.code === "900") {
